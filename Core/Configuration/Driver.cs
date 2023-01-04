@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using Core.BaseItems;
+using System.Configuration;
 using Utilities;
 
 namespace Core.Configuration
