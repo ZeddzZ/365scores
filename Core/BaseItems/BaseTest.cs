@@ -5,7 +5,7 @@ using Utilities;
 
 namespace Core.BaseItems
 {
-	[TestFixture]
+	[TestFixture, Parallelizable(ParallelScope.All)]
 	public abstract class BaseTest
 	{
 		protected ILog Logger => LogManager.GetLogger(GetType());

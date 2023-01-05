@@ -2,7 +2,7 @@
 {
 	public class CustomCsvReader : CsvReader
 	{
-		private string _filepath;
+		public string Filepath { get; set; }
 
 		public CustomCsvReader() : this(string.Empty)
 		{
@@ -10,13 +10,12 @@
 
 		public CustomCsvReader(string filePath)
 		{
-			_filepath = filePath;
+			Filepath = filePath;
 		}
 
-
-		public virtual IList<IList<string>> ReadNonStatic(char separator = ';', bool isHeaderExists = true, bool isSafe = true)
+		public virtual IList<IList<string>> Read(char separator = ';', bool isHeaderExists = true, bool isSafe = true)
 		{
-			return Read(_filepath, separator, isHeaderExists, isSafe);
+			return ReadFromFile(Filepath, separator, isHeaderExists, isSafe);
 		}
 	}
 }

@@ -7,7 +7,7 @@ namespace Core.Csv
 	{
 		protected static ILog Logger => LogManager.GetLogger(typeof(CsvReader));
 
-		public static IList<IList<string>> Read(string filepath, char separator = ';', bool isHeaderExists = true, bool isSafe = true)
+		public static IList<IList<string>> ReadFromFile(string filepath, char separator = ';', bool isHeaderExists = true, bool isSafe = true)
 		{
 			var list = new List<IList<string>>();
 			if (!File.Exists(filepath))
@@ -36,9 +36,9 @@ namespace Core.Csv
 			return list;
 		}
 
-		public static IList<T> ReadToModel<T>(string filepath, char separator = ';', bool isHeaderExists = true, bool isSafe = true) where T : BaseCsvModel
+		public static IList<T> ReadFromFileToModel<T>(string filepath, char separator = ';', bool isHeaderExists = true, bool isSafe = true) where T : BaseCsvModel
 		{
-			var items = Read(filepath, separator, isHeaderExists, isSafe);
+			var items = ReadFromFile(filepath, separator, isHeaderExists, isSafe);
 			return ConvertToModel<T>(items);
 		}
 

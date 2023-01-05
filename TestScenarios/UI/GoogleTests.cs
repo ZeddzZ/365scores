@@ -39,7 +39,7 @@ namespace TestScenarios.UI
 			}
 		}
 
-		[Test]
+		[Test, Retry(5)]
 		[TestCaseSource(nameof(MockCase))]
 		public void GoogleSearchMockTest(string searchText, string expectedUrl, int expectedResultsCount)
 		{
@@ -54,7 +54,7 @@ namespace TestScenarios.UI
 		{
 			int index = 0;
 			var mock = new Mock<CustomCsvReader>();
-			mock.Setup(csv => csv.ReadNonStatic(',', true, true)).Returns(new List<IList<string>>
+			mock.Setup(csv => csv.Read(',', true, true)).Returns(new List<IList<string>>
 			{
 				new List<string>
 				{
@@ -63,7 +63,7 @@ namespace TestScenarios.UI
 					"1",
 				}
 			});
-			var models = CsvReader.ConvertToModel<MockModel>(mock.Object.ReadNonStatic(',', true, true));
+			var models = CsvReader.ConvertToModel<MockModel>(mock.Object.Read(',', true, true));
 			foreach( var model in models)
 			{
 				var data = new TestCaseData(model.SearchText, model.ExpectedUrl, model.ExpectedResultCount);

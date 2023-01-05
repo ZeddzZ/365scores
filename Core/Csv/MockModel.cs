@@ -12,6 +12,12 @@ namespace Core.Csv
 
 		public MockModel(IList<string> item) : base(item)
 		{
+
+		}
+
+		public MockModel() : base(new List<string> { "", "", "0"})
+		{
+
 		}
 
 		public override void Map(IList<string> item)
@@ -19,6 +25,20 @@ namespace Core.Csv
 			SearchText = item[0];
 			ExpectedUrl = item[1];
 			ExpectedResultCount = int.Parse(item[2]);
+		}
+
+		public override bool Equals(object? obj)
+		{
+			var item = obj as MockModel;
+
+			if (item == null)
+			{
+				return false;
+			}
+
+			return SearchText == item.SearchText 
+				&& ExpectedUrl == item.ExpectedUrl 
+				&& ExpectedResultCount == item.ExpectedResultCount;
 		}
 	}
 }

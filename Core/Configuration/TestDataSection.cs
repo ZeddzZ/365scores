@@ -13,6 +13,9 @@ namespace Core.Configuration
 		[ConfigurationProperty("TestResultFolder", IsRequired = true)]
 		public Folder TestResultFolder => this["TestResultFolder"] as Folder;
 
+		[ConfigurationProperty("MessageQueue", IsRequired = false)]
+		public Queue MessageQueueConfig => this["MessageQueue"] as Queue;
+
 		public WebDriverTypes CurrentDriver => DriverConfig.CurrentDriver;
 		public Driver CurrentDriverConfig => DriverConfig.AvailableDrivers.First(el => el.Type == CurrentDriver);
 
