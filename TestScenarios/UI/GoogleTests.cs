@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using Core.Csv;
+using Moq;
+using NUnit.Framework;
 using PageObjects.Google;
 using PageObjects.Scores;
 using UiTests;
@@ -18,9 +20,9 @@ namespace TestScenarios.UI
 		}
 
 		[Test]
-		[TestCase("Livescore in Israel", "https://www.365scores.com", 0, TestName = "GoogleLifescoreTest")]
-		[TestCase("Livescore in Israel 365 scores", "https://www.365scores.com", 2, TestName = "GoogleLifescoreTest_365")]
-		public void GoogleLifescoreTest(string searchText, string expectedUrl, int expectedResultsCount)
+		[TestCase("Livescore in Israel", "https://www.365scores.com", 0, TestName = "GoogleSearchTest")]
+		[TestCase("Livescore in Israel 365 scores", "https://www.365scores.com", 2, TestName = "GoogleSearchTest_365")]
+		public void GoogleSearchTest(string searchText, string expectedUrl, int expectedResultsCount)
 		{			
 			var resultsPage = searchPage.Search(searchText);
 			var results = resultsPage.GetSearchResults();
@@ -34,6 +36,46 @@ namespace TestScenarios.UI
 				Assert.IsTrue(scoresPage.IsLogoExists());
 				resultsPage = scoresPage.Back<GoogleResultsPage>();
 				results = resultsPage.GetSearchResults();
+			}
+		}
+
+		[Test]
+		[TestCaseSource(nameof(MockCase))]
+		public void GoogleSearchMockTest(string searchText, string expectedUrl, int expectedResultsCount)
+		{
+			var resultsPage = searchPage.Search(searchText);
+			var results = resultsPage.GetSearchResults();
+			var linksAndTitles = resultsPage.GetSearchResultLinksAndTitles(results);
+			var expectedWebsites = linksAndTitles.Where(el => el.url.Contains(expectedUrl));
+			Assert.AreEqual(expectedResultsCount, expectedWebsites.Count());
+		}
+
+		private static IEnumerable<TestCaseData> MockCase()
+		{
+			int index = 0;
+			var mock = new Mock<CustomCsvReader>();
+			mock.Setup(csv => csv.ReadNonStatic(',', true, true)).Returns(new List<IList<string>>
+			{
+				new List<string>
+				{
+					"Team Liquid",
+					"https://liquipedia.net/",
+					"1",
+				}
+			});
+			var models = CsvReader.ConvertToModel<MockModel>(mock.Object.ReadNonStatic(',', true, true));
+			foreach( var model in models)
+			{
+				var data = new TestCaseData(model.SearchText, model.ExpectedUrl, model.ExpectedResultCount);
+				if (index++ > 0)
+				{
+					data.SetName($"GoogleSearchMockTest_{index++}");
+				}
+				else
+				{
+					data.SetName($"GoogleSearchMockTest");
+				}
+				yield return data;
 			}
 		}
 	}

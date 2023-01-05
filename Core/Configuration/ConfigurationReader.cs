@@ -4,7 +4,7 @@ using System.Configuration;
 
 namespace Core.Configuration
 {
-	public  class ConfigurationReader<T> where T: ConfigurationSection, new()
+	public class ConfigurationReader<T> where T: ConfigurationSection, new()
 	{
 		private static ILog Logger => LogManager.GetLogger(typeof(ConfigurationReader<T>));
 		public static T Configuration { get; set; }
