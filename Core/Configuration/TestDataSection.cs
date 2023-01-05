@@ -15,7 +15,9 @@ namespace Core.Configuration
 		public Folder TestResultFolder => this["TestResultFolder"] as Folder;
 
 		public WebDriverTypes CurrentDriver => DriverConfig.CurrentDriver;
+		public Driver CurrentDriverConfig => DriverConfig.AvailableDrivers.First(el => el.Type == CurrentDriver);
 
 		public EnvironmentTypes CurrentEnvironment => EnvironmentConfig.CurrentEnvironment;
+		public Environment CurrentEnvironmentConfig => EnvironmentConfig.AvailableEnvironments.First(el => el.Type == CurrentEnvironment);
 	}
 }

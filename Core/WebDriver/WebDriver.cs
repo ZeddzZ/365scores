@@ -33,6 +33,7 @@ namespace Core.WebDriver
 			if (_drivers.ContainsKey(testName))
 			{
 				Logger.Info($"Removing Instance of WebDriver for test {testName}");
+				_drivers[testName].Quit();
 				_drivers.Remove(testName);
 			}
 		}

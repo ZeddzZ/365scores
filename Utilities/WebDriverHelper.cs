@@ -14,6 +14,11 @@ namespace Utilities
 			return jsDriver.ExecuteScript(script, args);
 		}
 
+		public static void JsClick(this IWebDriver driver, IWebElement element)
+		{
+			ExecuteJs(driver, "arguments[0].click();", element);
+		}
+
 		public static Screenshot TakeScreenshot(this IWebDriver driver)
 		{
 			Logger.Info($"Creating screenshot of web page");
@@ -21,7 +26,5 @@ namespace Utilities
 			var screenshot = scr.GetScreenshot();
 			return screenshot;
 		}
-
-
 	}
 }

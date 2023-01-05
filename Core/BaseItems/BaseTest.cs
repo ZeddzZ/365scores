@@ -12,14 +12,14 @@ namespace Core.BaseItems
 		protected TestDataSection Configuration => TestConfiguration.Configuration;
 
 		[SetUp]
-		public void BeforeTest()
+		public void BeforeBaseTest()
 		{
 			Logger.Info($"Starting execution of test {TestHelper.GetTestName()}");
 
 		}
 
 		[TearDown]
-		public void AfterTest()
+		public void AfterBaseTest()
 		{
 			Logger.Info($"Finishing execution of test {TestHelper.GetTestName()}. The result is {TestHelper.GetTestResultStatus()}");
 		}

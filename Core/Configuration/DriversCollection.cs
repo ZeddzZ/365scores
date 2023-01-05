@@ -3,7 +3,7 @@
 namespace Core.Configuration
 {
 	[ConfigurationCollection(typeof(Driver), AddItemName = "Driver")]
-	public class DriversCollection : ConfigurationElementCollection
+	public class DriversCollection : ConfigurationElementCollection, IEnumerable<Driver>
 	{
 		public Driver this[int index] => BaseGet(index) as Driver;
 		
@@ -15,6 +15,14 @@ namespace Core.Configuration
 		protected override object GetElementKey(ConfigurationElement element)
 		{
 			return ((Driver)element).Type;
+		}
+
+		public new IEnumerator<Driver> GetEnumerator()
+		{
+			foreach (var key in BaseGetAllKeys())
+			{
+				yield return (Driver)BaseGet(key);
+			}
 		}
 	}
 }
