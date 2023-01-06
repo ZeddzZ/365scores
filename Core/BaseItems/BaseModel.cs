@@ -6,6 +6,7 @@ using Utilities;
 
 namespace Core.BaseItems
 {
+	[Serializable]
 	public abstract class BaseModel
 	{
 		protected ILog Logger => LogManager.GetLogger(GetType());

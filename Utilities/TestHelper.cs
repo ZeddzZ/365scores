@@ -29,5 +29,10 @@ namespace Utilities
 		{
 			return GetTestResult().Status;
 		}
+
+		public static void AddAttachment(string path)
+		{
+			AddTestAttachment(path);
+		}
 	}
 }

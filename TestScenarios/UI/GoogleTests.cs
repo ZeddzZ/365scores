@@ -43,6 +43,7 @@ namespace TestScenarios.UI
 		[TestCaseSource(nameof(MockCase))]
 		public void GoogleSearchMockTest(string searchText, string expectedUrl, int expectedResultsCount)
 		{
+			Logger.Info("Test Test");
 			var resultsPage = searchPage.Search(searchText);
 			var results = resultsPage.GetSearchResults();
 			var linksAndTitles = resultsPage.GetSearchResultLinksAndTitles(results);

@@ -30,6 +30,7 @@ namespace UiTests
 			var screenshot = WebDriverHelper.TakeScreenshot(WebDriver.GetDriver(TestName));
 			Logger.Info($"Saving screenshot to '{screenshotFullPath}'");
 			screenshot.SaveAsFile(screenshotFullPath);
+			TestContext.AddTestAttachment(screenshotFullPath);
 			WebDriver.RemoveDriver(TestName);
 		}
 	}

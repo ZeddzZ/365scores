@@ -1,5 +1,6 @@
 ﻿using Core.Configuration;
 using log4net;
+using log4net.Config;
 using NUnit.Framework;
 using Utilities;
 
@@ -14,6 +15,8 @@ namespace Core.BaseItems
 		[SetUp]
 		public void BeforeBaseTest()
 		{
+			//Setting up Logger to use configuration from app.config
+			XmlConfigurator.Configure();
 			Logger.Info($"Starting execution of test {TestHelper.GetTestName()}");
 
 		}
