@@ -9,7 +9,7 @@ namespace Core.BaseItems
 {
 	public abstract class BasePage
 	{
-		protected ILog Logger => LogManager.GetLogger(GetType());
+		protected ILog Logger => LoggerHelper.GetCurrentLogger();
 
 		protected IWebDriver Driver => WebDriver.WebDriver.GetDriver(TestHelper.GetTestFullName());
 		protected WebDriverWait Wait;

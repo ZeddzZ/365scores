@@ -1,11 +1,12 @@
 ﻿using Core.BaseItems;
 using log4net;
+using Utilities;
 
 namespace Core.Csv
 {
 	public abstract class CsvReader
 	{
-		protected static ILog Logger => LogManager.GetLogger(typeof(CsvReader));
+		protected static ILog Logger => LoggerHelper.GetCurrentLogger();
 
 		public static IList<IList<string>> ReadFromFile(string filepath, char separator = ';', bool isHeaderExists = true, bool isSafe = true)
 		{

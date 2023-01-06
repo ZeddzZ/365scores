@@ -6,7 +6,7 @@ namespace Utilities
 {
 	public static class ReflectionHelper
 	{
-		private static ILog Logger => LogManager.GetLogger(typeof(ReflectionHelper));
+		private static ILog Logger => LoggerHelper.GetCurrentLogger();
 		private static BindingFlags _defaultFlags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
 
 		public static IEnumerable<PropertyInfo> GetProperties(this object obj)

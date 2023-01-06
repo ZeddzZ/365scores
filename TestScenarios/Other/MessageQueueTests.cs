@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace TestScenarios.Other
 {
-	[TestFixture]
+	[TestFixture, Parallelizable(ParallelScope.None)]
 	public class MessageQueueTests : BaseTest
 	{
 		MsgQueue TestMessageQueue;

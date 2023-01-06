@@ -1,11 +1,12 @@
 ﻿using log4net;
 using MSMQ.Messaging;
+using Utilities;
 
 namespace Core.Queue
 {
 	public class MsgQueue
 	{
-		protected ILog Logger => LogManager.GetLogger(GetType());
+		protected ILog Logger => LoggerHelper.GetCurrentLogger();
 
 		private MessageQueue _queue;
 

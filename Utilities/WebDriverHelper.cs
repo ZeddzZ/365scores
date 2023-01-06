@@ -5,7 +5,7 @@ namespace Utilities
 {
 	public static class WebDriverHelper
 	{
-		private static ILog Logger => LogManager.GetLogger(typeof(WebDriverHelper));
+		private static ILog Logger => LoggerHelper.GetCurrentLogger();
 
 		public static object ExecuteJs(this IWebDriver driver, string script, params object[] args)
 		{

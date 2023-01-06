@@ -10,8 +10,8 @@ namespace Core.Configuration
 		[ConfigurationProperty("EnvironmentConfig", IsRequired = true)]
 		public EnvironmentConfig EnvironmentConfig => this["EnvironmentConfig"] as EnvironmentConfig;
 
-		[ConfigurationProperty("TestResultFolder", IsRequired = true)]
-		public Folder TestResultFolder => this["TestResultFolder"] as Folder;
+		[ConfigurationProperty("TestResults", IsRequired = true)]
+		public TestResults TestResults => this["TestResults"] as TestResults;
 
 		[ConfigurationProperty("MessageQueue", IsRequired = false)]
 		public Queue MessageQueueConfig => this["MessageQueue"] as Queue;
