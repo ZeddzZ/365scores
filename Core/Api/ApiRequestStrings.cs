@@ -1,6 +1,4 @@
-﻿using RestSharp;
-
-namespace Core.Api
+﻿namespace Core.Api
 {
 	public static class ApiRequestStrings
 	{

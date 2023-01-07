@@ -1,7 +1,6 @@
 ﻿using Core.BaseItems;
 using OpenQA.Selenium;
 using SeleniumExtras.PageObjects;
-using System.Web;
 
 namespace PageObjects.Google
 {

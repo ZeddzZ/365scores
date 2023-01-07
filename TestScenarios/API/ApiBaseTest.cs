@@ -1,7 +1,6 @@
 ﻿using Core.Api;
 using Core.BaseItems;
 using NUnit.Framework;
-using RestSharp;
 
 namespace TestScenarios.API
 {

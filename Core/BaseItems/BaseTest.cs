@@ -1,6 +1,5 @@
 ﻿using Core.Configuration;
 using log4net;
-using log4net.Appender;
 using log4net.Config;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;

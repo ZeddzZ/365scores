@@ -1,6 +1,4 @@
-﻿using MSMQ.Messaging;
-using System.Configuration;
-using Utilities;
+﻿using System.Configuration;
 
 namespace Core.Configuration
 {

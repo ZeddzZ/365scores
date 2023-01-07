@@ -3,7 +3,6 @@ using Core.Api;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Net;
-using System.Text.Json;
 
 namespace TestScenarios.API
 {
