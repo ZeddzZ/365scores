@@ -5,7 +5,7 @@ namespace Core.Configuration
 	[ConfigurationCollection(typeof(Environment), AddItemName = "Environment")]
 	public class EnvironmentsCollection : ConfigurationElementCollection, IEnumerable<Environment>
 	{
-		public Environment this[int index] => BaseGet(index) as Environment;
+		public Environment this[int index] => (Environment)BaseGet(index);
 		
 		protected override ConfigurationElement CreateNewElement()
 		{

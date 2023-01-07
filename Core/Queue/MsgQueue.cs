@@ -36,7 +36,7 @@ namespace Core.Queue
 			_queue.Send(message);
 		}
 
-		public void SendMesage<T>(T message, MessageQueueTransaction transaction = null)
+		public void SendMesage<T>(T message, MessageQueueTransaction? transaction = null)
 		{
 			Logger.Info($"Sending message {message} {(transaction != null ? $"with transaction {transaction}" : "")}  to queue");
 			_queue.Send(message, transaction);

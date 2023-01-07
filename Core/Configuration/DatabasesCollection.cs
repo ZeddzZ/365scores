@@ -5,7 +5,7 @@ namespace Core.Configuration
 	[ConfigurationCollection(typeof(Database), AddItemName = "Database")]
 	public class DatabasesCollection : ConfigurationElementCollection, IEnumerable<Database>
 	{
-		public Database this[int index] => BaseGet(index) as Database;
+		public Database this[int index] => (Database)BaseGet(index);
 		
 		protected override ConfigurationElement CreateNewElement()
 		{

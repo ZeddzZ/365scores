@@ -5,7 +5,7 @@ namespace Core.Configuration
 	[ConfigurationCollection(typeof(Queue), AddItemName = "MessageQueue")]
 	public class MessageQueuesCollection : ConfigurationElementCollection, IEnumerable<Queue>
 	{
-		public Queue this[int index] => BaseGet(index) as Queue;
+		public Queue this[int index] => (Queue)BaseGet(index);
 		
 		protected override ConfigurationElement CreateNewElement()
 		{

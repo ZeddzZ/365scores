@@ -31,8 +31,6 @@ namespace TestScenarios.API
 		[Test]
 		public void JsonPlaceholderPostsTest()
 		{
-			var minPostId = 1;
-			var maxPostId = 100;
 			var getPostsRequest = new ApiRequest(
 				JsonPlaceholderEndpoints.WithId(JsonPlaceholderEndpoints.UsersEndpoint, UserId) +
 				JsonPlaceholderEndpoints.PostsEndpoint);

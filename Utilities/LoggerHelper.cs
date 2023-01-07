@@ -11,15 +11,22 @@ namespace Utilities
 		public static FileAppender CreateFileAppender(string filePath, string messagePattern = "%date [%thread] %-5level %logger [%ndc] - %message%newline", bool append = false)
 		{
 			var layout = new PatternLayout(messagePattern);
-
-			var fileAppender = new FileAppender(layout, filePath, append);
+			var fileAppender = new FileAppender
+			{
+				Layout = layout,
+				File = filePath,
+				AppendToFile = append
+			};
 			return fileAppender;
 		}
 
 		public static void AddAppender(IAppender appender)
 		{
 			var logger = GetCurrentLogger().Logger as log4net.Repository.Hierarchy.Logger;
-			logger.AddAppender(appender);		
+			if (logger != null)
+			{
+				logger.AddAppender(appender);
+			}
 		}
 
 		public static void DropLogger()
