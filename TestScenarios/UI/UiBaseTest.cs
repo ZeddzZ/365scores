@@ -21,8 +21,7 @@ namespace UiTests
 		[TearDown]
 		public void AfterUiTest()
 		{
-			var testResult = TestHelper.GetTestResultStatus();
-			var screenshotFolder = Path.Combine(CurrentTestFolder, testResult.ToString());
+			var screenshotFolder = Path.Combine(CurrentTestFolder, TestResult.ToString());
 			FileHelper.CreateFolder(screenshotFolder);
 			var screenshotFullPath = FileHelper.CreateScreenshotName(screenshotFolder);
 			var screenshot = WebDriverHelper.TakeScreenshot(WebDriver.GetDriver(TestName));

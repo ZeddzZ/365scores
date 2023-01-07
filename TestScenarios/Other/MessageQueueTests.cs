@@ -8,12 +8,13 @@ namespace TestScenarios.Other
 	[TestFixture, Parallelizable(ParallelScope.None)]
 	public class MessageQueueTests : BaseTest
 	{
-		MsgQueue TestMessageQueue;
+		protected string MessageQueueName => "PrivateQueue";
+		protected MsgQueue TestMessageQueue;
 
 		[SetUp]
 		public void BeforeTest()
 		{
-			TestMessageQueue = new MsgQueue(Configuration.MessageQueueConfig);
+			TestMessageQueue = new MsgQueue(Configuration.AvailableQueues.First(el => el.QueueName == MessageQueueName));
 		}
 
 		[Test]

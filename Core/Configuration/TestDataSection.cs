@@ -13,8 +13,11 @@ namespace Core.Configuration
 		[ConfigurationProperty("TestResults", IsRequired = true)]
 		public TestResults TestResults => this["TestResults"] as TestResults;
 
-		[ConfigurationProperty("MessageQueue", IsRequired = false)]
-		public Queue MessageQueueConfig => this["MessageQueue"] as Queue;
+		[ConfigurationProperty("MessageQueues", IsRequired = false)]
+		public MessageQueuesCollection AvailableQueues => this["MessageQueues"] as MessageQueuesCollection;
+
+		[ConfigurationProperty("Databases", IsRequired = false)]
+		public DatabasesCollection AvailableDatabases => this["Databases"] as DatabasesCollection;
 
 		public WebDriverTypes CurrentDriver => DriverConfig.CurrentDriver;
 		public Driver CurrentDriverConfig => DriverConfig.AvailableDrivers.First(el => el.Type == CurrentDriver);

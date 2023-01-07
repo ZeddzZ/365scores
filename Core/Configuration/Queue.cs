@@ -6,6 +6,9 @@ namespace Core.Configuration
 {
 	public class Queue : ConfigurationElement
 	{
+		[ConfigurationProperty("queueName", IsRequired = true)]
+		public string QueueName => base["queueName"] as string;
+
 		[ConfigurationProperty("path", IsRequired = true)]
 		public string QueuePath => base["path"] as string;
 
